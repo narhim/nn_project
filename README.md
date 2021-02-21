@@ -43,7 +43,7 @@ The project file structure is as follows:
     * README.md  
     * data_preprocess.py  
     * sample.conll  
-    * **results/**  
+    * **data/**  
         * sample.tsv
         * sample.info
     * run.sh
@@ -81,7 +81,7 @@ python data_preprocess.py \
   --dataset_name sample.conll \
   --output_dataset_name sample.tsv \
   --output_info_name sample.info \
-  --output_dir results
+  --output_dir data
 ```
 
 The `data_preprocess.py` script also performs the next step [(obtaining data statistics)](#obtain-data-statistics), 
@@ -104,7 +104,7 @@ python data_preprocess.py \
   --dataset_name sample.conll \
   --output_dataset_name sample.tsv \
   --output_info_name sample.info \
-  --output_dir results
+  --output_dir data
 ```
 
 The command above can also be executed by the bash script `run.sh`.
