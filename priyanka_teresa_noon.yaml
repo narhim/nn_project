@@ -1,3 +1,6 @@
 name: priyanka_teresa_noon
+channels:
+  - defaults
 dependencies:
-  - python 3.6  
+  - python=3.6
+  - anaconda
