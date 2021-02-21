@@ -50,7 +50,7 @@ The project file structure is as follows:
 _Note:_ the **data/** directory and the `.tsv` and `.info` files are not provided per submission instructions. 
 This directory (and files) will be created by the `data_preprocess.py` script.
 
-_Note:_ the `sample.conll` file is _not_ provided either. This file structure demonstrate where this file should be
+_Note:_ the `sample.conll` file is _not_ provided either. This file structure demonstrates where this file should be
 in relation to the `data_preprocess.py` script for the script to run with the default arguments.
 
 ## Data Preprocessing
