@@ -71,7 +71,7 @@ def generate_info_file(args):
                     maximum = int(line[0])
                     if count_seq == 0:
                         minimum = maximum
-                temp = int(line[0])
+                temp = int(line[0])+1
 
                 # creating dictionary of pos
 
