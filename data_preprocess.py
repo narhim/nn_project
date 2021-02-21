@@ -119,12 +119,15 @@ def main():
                            help='Directory name to save the pre-processed and info files')
     my_parser.add_argument('--info_filename', default='sample.info', help='Filename to save data statistics')
     my_parser.add_argument('--output_filename', default='sample.tsv', help='Filename to save the pre-processed file')
+    my_parser.add_argument('--both', type=bool, default=True, help='Perform both simplify and generated info file steps')
 
     # Execute the parse_args() method
     args = my_parser.parse_args()
 
     simplify_datafile(args)
-    generate_info_file(args)
+
+    if args.both:
+        generate_info_file(args)
 
 
 if __name__ == '__main__':

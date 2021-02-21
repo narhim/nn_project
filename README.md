@@ -23,23 +23,21 @@ in Part 1 of the projects as outlined in the [Table of Contents](#table-of-conte
 
 ## Prerequisites
 
-To replicate our work, please ensure your environment contains the modules listed in the provided **environment yaml**
-or **requirements.txt** file prior to cloning our repo.
+To replicate our work, please ensure your environment contains the modules listed in the provided **environment yaml**. 
+At the moment, the only specification there is a Python version 3.6 or greater and the default anaconda packages 
+(optional). The environment file will be updated if other specific libraries are needed.
 
-We include 2 versions of the environment yaml files, 1 exported from a Mac OS environment and another from a Linux OS.
 
-Please follow standard conda instructions to re-create an environment from a yaml file **or** follow the standard
-instructions for pip installing the required modules from a requirements file.
+Please follow standard conda instructions to re-create an environment from a yaml file.
 
-Scripts are created for and tested on Python 3.
+Scripts are created for Python3 and have been tested on Mac OS and Linux platforms.
 
-_Note:_ The original data files for Part 1.1 are not provided. 
 
 ## Repo File Organization
 
 The project file structure is as follows:
 
-* **Project Parent Directory:** nn_project  
+* **Project Parent Directory:** nn_project  --> **this should be your pwd** for running scripts.
     * README.md  
     * data_preprocess.py  
     * sample.conll  
@@ -47,6 +45,10 @@ The project file structure is as follows:
         * sample.tsv
         * sample.info
     * run.sh
+    
+
+_Note:_ the **data/** directory and the `.tsv` and `.info` files are not provided per submission instructions. 
+This directory (and files) will be created by the `data_preprocess.py` script.
 
 ## Data Preprocessing
 
@@ -69,6 +71,8 @@ containing these files.
 cat *.goldconll >> sample.conll 
 ```
 
+_Note:_ as per submission instructions, data files listed above are not provided. Only `sample.conll` file is provided.
+
 ### Create `sample.tsv` Data File
 
 The `sample.conll` file still contains extraneous information we do not need for the project. We create `sample.tsv`
@@ -79,17 +83,30 @@ This step is done in the `data_preprocess.py` script, which can be run with the 
 ```bash
 python data_preprocess.py \
   --dataset_name sample.conll \
-  --output_dataset_name sample.tsv \
-  --output_info_name sample.info \
-  --output_dir data
+  --output_dir data \
+  --info_filename sample.info \
+  --output_filename sample.tsv \
+  --both True
 ```
 
 The `data_preprocess.py` script also performs the next step [(obtaining data statistics)](#obtain-data-statistics), 
 hence the script argument for output_info_name filename.  
 
-Both steps are done by executing the `data_preprocess.py` script once.  
+Both steps are done by executing the `data_preprocess.py` script once.
 
 We have also made a bash script `run.sh`, which performs the script above with the default arguments.
+
+_Note:_ It is possible to only generate the simplified data file `sample.tsv` without generating the `sample.info` file.
+Simply pass `False` to the `--both` argument of the `data_preprocess.py` as in an example below:
+
+```bash
+python data_preprocess.py \
+  --dataset_name sample.conll \
+  --output_dir data \
+  --info_filename sample.info \
+  --output_filename sample.tsv \
+  --both False
+```
 
 ### Obtain Data Statistics
 
@@ -102,17 +119,18 @@ To obtain the statistics, run the `data_preprocess.py` script as in the previous
 ```bash
 python data_preprocess.py \
   --dataset_name sample.conll \
-  --output_dataset_name sample.tsv \
-  --output_info_name sample.info \
-  --output_dir data
+  --output_dir data \
+  --info_filename sample.info \
+  --output_filename sample.tsv \
+  --both True
 ```
 
 The command above can also be executed by the bash script `run.sh`.
 
 As mentioned in the previous section, both this step and the step to create the `sample.tsv` file are done by 
-executing the `data_preprocess.py` script once. If you have already
-run the `data_preprocess.py` script once to create the `sample.tsv`file, _there is no need to run it again_.
-
+executing the `data_preprocess.py` script once with the default arguments. If you have already
+run the `data_preprocess.py` script once (and you did _not_ specify the argument `--both False`) to create the 
+`sample.tsv`file, **there is no need to run `data_preprocess.py` again.**
 
 
 ## Part 2
