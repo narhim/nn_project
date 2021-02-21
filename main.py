@@ -36,6 +36,7 @@ with open('sample.tsv','r',encoding="utf-8") as tsvfile:
     pos_dict={}
     pos_lost=[]
     for line in tsvreader:
+    	# ignoring sequence separator '*'
         if line[0]!="*":
             if int(line[0])>maximum:
                 maximum=int(line[0])
