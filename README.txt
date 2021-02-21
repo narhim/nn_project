@@ -1,1 +1,0 @@
-Repository for the project of the lecture neural networks.
