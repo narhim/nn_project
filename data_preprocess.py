@@ -71,7 +71,7 @@ def generate_info_file(args):
                     maximum = int(line[0])
                     if count_seq == 0:
                         minimum = maximum
-                temp = int(line[0])
+                temp = int(line[0])+1
 
                 # creating dictionary of pos
 
@@ -85,7 +85,12 @@ def generate_info_file(args):
                 mean += temp
                 if temp < minimum:
                     minimum = temp
-
+    # calculating the final values
+    mean=mean/count_seq
+    
+    # taking into account the word at index '0'
+    maximum+=1 
+    minimum+=1
     for k in pos_dict:
         pos_dict[k] = pos_dict[k] / sum(pos_dict.values())
 
