@@ -50,6 +50,9 @@ The project file structure is as follows:
 _Note:_ the **data/** directory and the `.tsv` and `.info` files are not provided per submission instructions. 
 This directory (and files) will be created by the `data_preprocess.py` script.
 
+_Note:_ the `sample.conll` file is _not_ provided either. This file structure demonstrate where this file should be
+in relation to the `data_preprocess.py` script for the script to run with the default arguments.
+
 ## Data Preprocessing
 
 Part 1 of the project includes data preprocessing and information gathering steps as described in the following
@@ -64,14 +67,19 @@ The original data files are distributed as 4 .conll files:
 * pri0016.goldconll
 * wsj1681.goldconll
 
-To concatenate these 4 files into 1 data file named `sample.conll`, we ran the following command in from the directory 
+To concatenate these 4 files into 1 data file named `sample.conll`, we ran the following command from the directory 
 containing these files.
 
 ```
 cat *.goldconll >> sample.conll 
 ```
 
-_Note:_ as per submission instructions, data files listed above are not provided. Only `sample.conll` file is provided.
+_Note:_ as per submission instructions, data files listed above are not provided.
+
+If these files are saved elsewhere that is not this project directory, the `sample.conll` file, once generated, should
+be moved to the location as described in the [Repo File Organization.](#repo-file-organization) This is simply so that
+the `data_preprocess.py` script can be executed with the default arguments. Otherwise, please specify the path to the
+`sample.conll` generated from this step as appropriate. 
 
 ### Create `sample.tsv` Data File
 
@@ -107,6 +115,7 @@ python data_preprocess.py \
   --output_filename sample.tsv \
   --both False
 ```
+_Note 2:_ filename arguments for `--info_filename` and `--output_filename` expect **only** file names and **not** paths.
 
 ### Obtain Data Statistics
 
