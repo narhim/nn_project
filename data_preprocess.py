@@ -3,6 +3,7 @@ import os
 import argparse
 import re
 import csv
+import sys
 
 
 def simplify_datafile(args):
@@ -49,6 +50,8 @@ def generate_info_file(args):
     :return:
     """
 
+    # increase csv field size limit otherwise large fields will throw an error
+    csv.field_size_limit(sys.maxsize)
     result_file_path = os.path.join(args.output_dir, args.output_filename)
     # reading from sample.tsv
     with open(result_file_path, 'r', encoding="utf-8") as tsvfile:
