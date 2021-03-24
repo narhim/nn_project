@@ -20,7 +20,7 @@ in Part 1 and Part 2 of the project as outlined in the [Table of Contents](#tabl
     [1.3 Obtain Data Statistics](#obtain-data-statistics)
   
 * [Part 2: Implementing and Analyzing](#implementing-and-analyzing)  
-    [2.1 Research Question](#research-question)
+    [2.1 Research Question](#research-question)  
     [2.2 - 2.5 Dataset Loading, Tokenization, Embeddings, Training](#dataset-loading-tokenization-embeddings-and-training)
 
 ## Prerequisites
