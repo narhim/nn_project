@@ -35,7 +35,6 @@ Please follow standard conda instructions to re-create an environment from a yam
 
 Scripts are created for Python3 and have been tested on Mac OS and Linux platforms.
 
-
 ## Repo File Organization
 
 The project file structure is as follows:
@@ -159,7 +158,10 @@ following modifications:
   `.gold_conll` files and specifying the target directory to be just one level up from this data directory as follows:
   ```cat *.gold_conll >> ../sample.conll```.
 * Follow the rest of the steps in the [Data Preprocessing](#data-preprocessing) part and make sure to update file/folder
-names to correspond to this dataset instead of the one described in Part 1 of the project.
+names to correspond to this dataset instead of the one described in Part 1 of the project. 
+  
+As with Part 1 of the project, the data files are not included and data files shown in the 
+[Repo File Organization](#repo-file-organization) are simply to clarify project file organization.
   
 ### Research Question
 
