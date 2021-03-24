@@ -3,8 +3,8 @@
 This is the Final Project for the WS2020/2021 Neural Networks Implementation and Application course at the University
 of Saarland.
 
-This project is in progress and will be updated periodically. The information in this repository reflects works done
-in Part 1 of the projects as outlined in the [Table of Contents](#table-of-contents).
+The information in this repository reflects works done
+in Part 1 and Part 2 of the project as outlined in the [Table of Contents](#table-of-contents).
 
 ## Group Members
 
@@ -19,16 +19,19 @@ in Part 1 of the projects as outlined in the [Table of Contents](#table-of-conte
     [1.2 Create `sample.tsv` Data File](#create-sampletsv-data-file)  
     [1.3 Obtain Data Statistics](#obtain-data-statistics)
   
-* Part 2: _to be continued_
+* [Part 2: Implementing and Analyzing](#implementing-and-analyzing)  
+    [2.1 Research Question](#research-question)
+    [2.2 - 2.5 Dataset Loading, Tokenization, Embeddings, Training](#dataset-loading-tokenization-embeddings-and-training)
 
 ## Prerequisites
 
 To replicate our work, please ensure your environment contains the modules listed in the provided **environment yaml**. 
-At the moment, the only specification there is a Python version 3.6 or greater and the default anaconda packages 
-(optional). The environment file will be updated if other specific libraries are needed.
+For Part 1, the only specification is Python version 3.6 or greater and the default anaconda packages 
+(optional). Since we ran our experiments on Google Colab to utilize GPU, we install the additional packages as specified
+in the notebooks. The modules required are listed in the **yaml** file as well and these should be installed prior
+to running the notebooks unless running on Colab. 
 
-
-Please follow standard conda instructions to re-create an environment from a yaml file.
+Please follow standard conda instructions to re-create an environment from a yaml file or use pip.
 
 Scripts are created for Python3 and have been tested on Mac OS and Linux platforms.
 
@@ -38,13 +41,16 @@ Scripts are created for Python3 and have been tested on Mac OS and Linux platfor
 The project file structure is as follows:
 
 * **Project Parent Directory:** nn_project  --> **this should be your pwd** for running scripts.
-    * README.md  
+    * README.md
     * data_preprocess.py  
     * sample.conll  
     * **data/**  
         * sample.tsv
         * sample.info
     * run.sh
+    * bert_pos_tagging.ipynb
+    * distil_pos_tagging.ipynb
+    * xlnet_pos_tagging.ipynb
     
 
 _Note:_ the **data/** directory and the `.tsv` and `.info` files are not provided per submission instructions. 
@@ -71,7 +77,7 @@ To concatenate these 4 files into 1 data file named `sample.conll`, we ran the f
 containing these files.
 
 ```
-cat *.goldconll >> sample.conll 
+cat *.gold_conll >> sample.conll 
 ```
 
 _Note:_ as per submission instructions, data files listed above are not provided.
@@ -142,6 +148,47 @@ run the `data_preprocess.py` script once (and you did _not_ specify the argument
 `sample.tsv`file, **there is no need to run `data_preprocess.py` again.**
 
 
-## Part 2
+## Implementing and Analyzing
 
-Pending further instructions.
+Before continuing onto the subsequent steps, the dataset utilized for this part of the project is the **Ontonotes 4.0
+dataset**, consisting of multiple `.gold_conll` data files that needed to be pre-processed into `sample.tsv` data file.  
+These pre-processing steps can be done as in the [Data Preprocessing](#data-preprocessing) part of the project with the
+following modifications:
+
+* Generate the `sample.conll` file with the same bash command as before from the directory containing the multiple
+  `.gold_conll` files and specifying the target directory to be just one level up from this data directory as follows:
+  ```cat *.gold_conll >> ../sample.conll```.
+* Follow the rest of the steps in the [Data Preprocessing](#data-preprocessing) part and make sure to update file/folder
+names to correspond to this dataset instead of the one described in Part 1 of the project.
+  
+### Research Question
+
+Our project compares the different flavors of the BERT embeddings: _BERT_, _DistilBERT_, and _XLNet_.  In our report, 
+we were able to results only from _BERT_ and _DistilBERT_ as we did not complete the implementation and training for 
+the _XLNet_ model. 
+  
+### Dataset Loading, Tokenization, Embeddings, and Training
+
+All the steps from creating a PyTorch Dataset, Tokenization, Embedding, and actual training of each model are done in
+their respective Google Colab Notebooks:
+
+* bert_pos_tagging.ipynb
+* distil_pos_tagging.ipynb
+* xlnet_pos_tagging.ipynb
+
+Simply follow the instructions and comments in these notebooks to execute the experiments. Please note that the data
+loading steps of all the three notebooks are identical.  
+The `xlnet_pos_tagging.ipynb` only contains the skeleton
+pipeline code for POS tagging with XLNet, which still needs adjustments of certain arguments' parameters to be ready
+for training and testing. This notebook serves as a general pseudocode for the unfinished portion of the project.
+
+We use the _Huggingface TokenClassification Training Pipeline_ for all 3 models in our experiment with _wandb_
+integration option built in as part of the pipeline. Simply provide your own log-in credentials when prompted during
+notebook execution to see plots/graphs. 
+
+For the results and discussion of our experiments, please see the `.pdf` report submitted separately.
+
+
+
+
+
